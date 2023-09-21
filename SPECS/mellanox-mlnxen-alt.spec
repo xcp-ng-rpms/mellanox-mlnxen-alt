@@ -7,12 +7,12 @@
 
 Summary: %{vendor_name} %{driver_name} device drivers
 Name: %{vendor_label}-%{driver_name}-alt
-Version: 5.4_1.0.3.0
-Release: 1%{?dist}
+Version: 5.9_0.5.5.0
+Release: 1.1%{?dist}
 License: GPLv2
 
 # Extracted from latest XS driver disk
-Source0: mellanox-mlnxen-5.4_1.0.3.0.tar.gz
+Source0: mellanox-mlnxen-5.9_0.5.5.0.tar.gz
 
 BuildRequires: gcc
 BuildRequires: kernel-devel
@@ -66,5 +66,12 @@ find %{buildroot}/lib/modules/%{kernel_version} -name "*.ko" -type f | xargs chm
 /lib/modules/%{kernel_version}/*/*.ko
 
 %changelog
+* Thu Sep 21 2023 Gael Duperrey <gduperrey@vates.tech> - 5.9_0.5.5.0-1.1
+- Update to version 5.9_0.5.5.0-1.1
+- Synced from XS driver SRPM mellanox-mlnxen-5.9_0.5.5.0-1.xs8~2_1.src.rpm
+- *** Upstream changelog ***
+- * Mon Aug 28 2023 Stephen Cheng <stephen.cheng@citrix.com> - 5.9_0.5.5.0-1
+- - CP-43274: Update to version 5.9-0.5.5.0
+
 * Tue Jan 10 2023 Samuel Verschelde <stormi-xcp@ylix.fr> - 5.4_1.0.3.0-1
 - Initial package
