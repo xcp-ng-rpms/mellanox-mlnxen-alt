@@ -8,7 +8,7 @@
 Summary: %{vendor_name} %{driver_name} device drivers
 Name: %{vendor_label}-%{driver_name}-alt
 Version: 5.9_0.5.5.0
-Release: 1.1%{?dist}
+Release: 1.2%{?dist}
 License: GPLv2
 
 # Extracted from latest XS driver disk
@@ -20,6 +20,10 @@ Provides: vendor-driver
 Requires: kernel-uname-r = %{kernel_version}
 Requires(post): /usr/sbin/depmod
 Requires(postun): /usr/sbin/depmod
+
+# XCP-ng: virtual provides for mlx4-modules-alt's need
+# Versioned using the date in the compat_base file in the tarball
+Provides: mlx_compat = 20230125
 
 %description
 %{vendor_name} %{driver_name} device drivers for the Linux Kernel
@@ -66,6 +70,9 @@ find %{buildroot}/lib/modules/%{kernel_version} -name "*.ko" -type f | xargs chm
 /lib/modules/%{kernel_version}/*/*.ko
 
 %changelog
+* Mon Jun 17 2024 Samuel Verschelde <stormi-xcp@ylix.fr> - 5.9_0.5.5.0-1.2
+- Add mlx_compat virtual provides, needed by mlx4-modules-alt
+
 * Thu Sep 21 2023 Gael Duperrey <gduperrey@vates.tech> - 5.9_0.5.5.0-1.1
 - Update to version 5.9_0.5.5.0-1.1
 - Synced from XS driver SRPM mellanox-mlnxen-5.9_0.5.5.0-1.xs8~2_1.src.rpm
