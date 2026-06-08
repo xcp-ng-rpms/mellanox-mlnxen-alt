@@ -8,11 +8,12 @@
 Summary: %{vendor_name} %{driver_name} device drivers
 Name: %{vendor_label}-%{driver_name}-alt
 Version: 5.4_1.0.3.0
-Release: 2%{?dist}
+Release: 3%{?dist}
 License: GPLv2
 
 # Extracted from latest XS driver disk
 Source0: mellanox-mlnxen-5.4_1.0.3.0.tar.gz
+Patch0: netscaler_everest_xs8_200g.patch
 
 BuildRequires: gcc
 BuildRequires: kernel-devel
@@ -70,6 +71,9 @@ find %{buildroot}/lib/modules/%{kernel_version} -name "*.ko" -type f | xargs chm
 /lib/modules/%{kernel_version}/*/*.ko
 
 %changelog
+* Fri Apr 24 2026 Quentin Casasnovas <quentin.casasnovas@vates.tech> - 5.4_1.0.3.0-3
+- Fixed build error on kernels 4.19.19-8.0.42.1+ due to missing link modes
+
 * Mon Jun 17 2024 Samuel Verschelde <stormi-xcp@ylix.fr> - 5.4_1.0.3.0-2
 - Add mlx_compat virtual provides, needed by mlx4-modules-alt
 
