@@ -8,7 +8,10 @@
 Summary: %{vendor_name} %{driver_name} device drivers
 Name: %{vendor_label}-%{driver_name}-alt
 Version: 5.4_1.0.3.0
-Release: 3%{?dist}
+Release: 4%{?dist}
+# Built against new kABI after cip rebase
+Requires: xcpng-kernel-kabi = 4.19.325-cip134+
+
 License: GPLv2
 
 # Extracted from latest XS driver disk
@@ -71,6 +74,9 @@ find %{buildroot}/lib/modules/%{kernel_version} -name "*.ko" -type f | xargs chm
 /lib/modules/%{kernel_version}/*/*.ko
 
 %changelog
+* Mon Aug 31 2026 Quentin Casasnovas <quentin.casasnovas@vates.tech> - 5.4_1.0.3.0-4
+- Rebuild for kernel v4.19.325-cip134
+
 * Fri Apr 24 2026 Quentin Casasnovas <quentin.casasnovas@vates.tech> - 5.4_1.0.3.0-3
 - Fixed build error on kernels 4.19.19-8.0.42.1+ due to missing link modes
 
