@@ -8,7 +8,7 @@
 Summary: %{vendor_name} %{driver_name} device drivers
 Name: %{vendor_label}-%{driver_name}-alt
 Version: 5.4_1.0.3.0
-Release: 3%{?dist}
+Release: 3.0.kernelpreview.1%{?dist}
 License: GPLv2
 
 # Extracted from latest XS driver disk
@@ -16,7 +16,7 @@ Source0: mellanox-mlnxen-5.4_1.0.3.0.tar.gz
 Patch0: netscaler_everest_xs8_200g.patch
 
 BuildRequires: gcc
-BuildRequires: kernel-devel
+BuildRequires: kernel-devel >= 4.19.325-cip137.8.0.46.16
 Provides: vendor-driver
 Requires: kernel-uname-r = %{kernel_version}
 Requires(post): /usr/sbin/depmod
@@ -71,6 +71,9 @@ find %{buildroot}/lib/modules/%{kernel_version} -name "*.ko" -type f | xargs chm
 /lib/modules/%{kernel_version}/*/*.ko
 
 %changelog
+* Mon Nov 16 2026 Quentin Casasnovas <quentin.casasnovas@vates.tech> - 5.4_1.0.3.0-3.0.kernelpreview.1
+- Rebuild for kernel v4.19.325-cip137
+
 * Fri Apr 24 2026 Quentin Casasnovas <quentin.casasnovas@vates.tech> - 5.4_1.0.3.0-3
 - Fixed build error on kernels 4.19.19-8.0.42.1+ due to missing link modes
 
