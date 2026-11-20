@@ -8,7 +8,7 @@
 Summary: %{vendor_name} %{driver_name} device drivers
 Name: %{vendor_label}-%{driver_name}-alt
 Version: 5.4_1.0.3.0
-Release: 3.kernelpreview.1%{?dist}
+Release: 3.kernelpreview.1.0.testv0.1%{?dist}
 License: GPLv2
 
 # Extracted from latest XS driver disk
